@@ -46,11 +46,6 @@ class SearchPivot
 
 }
 
-class MakePillars
-{
-
-
-}
 
 class Pillar
 {
