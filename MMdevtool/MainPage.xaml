@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="MMdevtool.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MMdevtool"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Pivot Title="Pivot">
+            <PivotItem Header="search" Margin="12,0,209,0">
+                <Canvas x:Name="map_canvas" Margin="10,10,10,10" Background="#FF707070" Loaded="Canvas_Loaded" MinWidth="950" MinHeight="950" Width="950" Height="950" HorizontalAlignment="Left"/>
+            </PivotItem>
+            <PivotItem Header="PivotItem 1">
+                <Grid/>
+            </PivotItem>
+        </Pivot>
+        <Button Content="Button" Margin="1238,946,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>
