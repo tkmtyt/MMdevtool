@@ -36,9 +36,10 @@ namespace MMdevtool
 
         private void Canvas_Loaded(object sender, RoutedEventArgs e)
         {
-            this.DrawPillar(search_pivot.Pillars);                      //DrawPillarメソッドに先ほどインスタンス化したsearch_pivotのPillarsの値を渡す（値では無くてポインタを渡している？？）.
-                                                                        // [ans] C#では、プリミティブ型(intとかdouble)以外を扱う時は基本的にすべて参照(ポインタ的な物)で、値を直接扱う事はありません。
-                                                                        //       MainPage.search_pivotもC的表現で言えば、SearchPivot * 型です。
+            this.DrawPillar(search_pivot.make_pillars.Pillars);                      //DrawPillarメソッドに先ほどインスタンス化したsearch_pivotのPillarsの値を渡す（値では無くてポインタを渡している？？）.
+                                                                                     // [ans] C#では、プリミティブ型(intとかdouble)以外を扱う時は基本的にすべて参照(ポインタ的な物)で、値を直接扱う事はありません。
+                                                                                     //       MainPage.search_pivotもC的表現で言えば、SearchPivot * 型です。
+            this.DrawWall(search_pivot.make_walls.Walls);
         }
 
 
@@ -49,7 +50,7 @@ namespace MMdevtool
             foreach (var p in pillars)
             {
                 var r = new Rectangle();                                //Rectangleクラスのrというインスタンスを作り、コンストラクタを実行
-               
+
                 r.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
                 r.Width = 3;
                 r.Height = 3;
@@ -58,6 +59,22 @@ namespace MMdevtool
                 Canvas.SetLeft(r, p.X * 30 + 3);                        //描画後位置移動.
                                                                         // [ans] 実はこれが一番やっかいな記述なんですが、ひとまずスルーで良いと思います・・・
                 Canvas.SetTop(r, p.Y * 30 + 3);
+            }
+        }
+        private void DrawWall(IEnumerable<Wall> walls)            
+        {
+            foreach (var p in walls)
+            {
+                var r = new Rectangle();                                //Rectangleクラスのrというインスタンスを作り、コンストラクタを実行
+
+                r.Fill = new SolidColorBrush(Windows.UI.Colors.DarkRed);
+                r.Width = 3;
+                r.Height = 27;
+                this.map_canvas.Children.Add(r);                        //map_canvasに描画(Childrenって何なの？).
+                                                                        // [ans] ChildrenはCanvasクラスのメンバで、Canvasクラスはここに追加された要素を描画するように作られているという感じですね。
+                Canvas.SetLeft(r, p.X * 30 + 3);                        //描画後位置移動.
+                                                                        // [ans] 実はこれが一番やっかいな記述なんですが、ひとまずスルーで良いと思います・・・
+                Canvas.SetTop(r, p.Y * 30 + 3+3);
             }
         }
 
